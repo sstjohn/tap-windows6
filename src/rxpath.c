@@ -301,7 +301,7 @@ AdapterReturnNetBufferLists(
     )
 {
     PTAP_ADAPTER_CONTEXT    adapter = (PTAP_ADAPTER_CONTEXT )MiniportAdapterContext;
-    PNET_BUFFER_LIST        currentNbl, nextNbl;
+	PNET_BUFFER_LIST        currentNbl; // , nextNbl;
 
     UNREFERENCED_PARAMETER(ReturnFlags);
 

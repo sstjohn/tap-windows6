@@ -205,7 +205,7 @@ Return Value:
 --*/
 {
     PDEVICE_OBJECT deviceObject = DriverObject->DeviceObject;
-    UNICODE_STRING uniWin32NameString;
+//    UNICODE_STRING uniWin32NameString;
 
     DEBUGP (("[TAP] --> TapDriverUnload; version [%d.%d] %s %s unloaded\n",
         TAP_DRIVER_MAJOR_VERSION,

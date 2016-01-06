@@ -160,7 +160,7 @@ GetDebugLine (
                     g_Debug.in = g_Debug.out = 0;
                     if (g_Debug.error)
                     {
-                        const unsigned int tlen = strlen (truncated);
+                        const unsigned int tlen = (unsigned) strlen (truncated);
                         if (tlen < g_Debug.capacity)
                         {
                             NdisMoveMemory (g_Debug.text, truncated, tlen+1);

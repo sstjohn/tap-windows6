@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{484CA946-6E35-44E5-9423-A8A38505355C}</ProjectGuid>
+    <TemplateGuid>{8b1800b9-d017-4029-9785-13ef5e5b328e}</TemplateGuid>
+    <Keyword>Converted Driver Project</Keyword>
+    <RootNamespace>ndislwf.vcxproj</RootNamespace>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration>Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+    <RootNamespace>tap_windows6</RootNamespace>
+    <WindowsTargetPlatformVersion>$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <ConfigurationType>Driver</ConfigurationType>
+    <DriverType>WDM</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <SupportsPackaging>true</SupportsPackaging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <OutputName>ndislwf</OutputName>
+    <TargetName>tap0901</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
+    <OutputName>ndislwf</OutputName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreProcessorDefinitions>%(PreProcessorDefinitions);NDIS_WDM=1;TAP_DRIVER_MAJOR_VERSION=9;TAP_DRIVER_MINOR_VERSION=22;NDIS_SUPPORT_NDIS61=1;NDIS_MINIPORT_DRIVER=1;NDIS61_MINIPORT=1</PreProcessorDefinitions>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings);4201;4214;4127;4057;4100;4101;4200;4189</DisableSpecificWarnings>
+      <PreCompiledHeaderFile>precomp.h</PreCompiledHeaderFile>
+      <PreCompiledHeader>NotUsing</PreCompiledHeader>
+      <WarningVersion>14</WarningVersion>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..;.;</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);ndis.lib;ntstrsafe.lib;wdmsec.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..;.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreProcessorDefinitions>%(PreProcessorDefinitions);NDIS_WDM=1;NDIS630=1</PreProcessorDefinitions>
+      <DisableSpecificWarnings>%(DisableSpecificWarnings);4201;4214</DisableSpecificWarnings>
+      <PreCompiledHeaderFile>precomp.h</PreCompiledHeaderFile>
+      <PreCompiledHeader>Use</PreCompiledHeader>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..;.;</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);ndis.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\adapter.c" />
+    <ClCompile Include="src\device.c" />
+    <ClCompile Include="src\dhcp.c" />
+    <ClCompile Include="src\error.c" />
+    <ClCompile Include="src\macinfo.c" />
+    <ClCompile Include="src\mem.c" />
+    <ClCompile Include="src\oidrequest.c" />
+    <ClCompile Include="src\rxpath.c" />
+    <ClCompile Include="src\tapdrvr.c" />
+    <ClCompile Include="src\txpath.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\adapter.h" />
+    <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\constants.h" />
+    <ClInclude Include="src\device.h" />
+    <ClInclude Include="src\dhcp.h" />
+    <ClInclude Include="src\endian.h" />
+    <ClInclude Include="src\error.h" />
+    <ClInclude Include="src\hexdump.h" />
+    <ClInclude Include="src\lock.h" />
+    <ClInclude Include="src\macinfo.h" />
+    <ClInclude Include="src\mem.h" />
+    <ClInclude Include="src\proto.h" />
+    <ClInclude Include="src\prototypes.h" />
+    <ClInclude Include="src\tap-windows.h" />
+    <ClInclude Include="src\tap.h" />
+    <ClInclude Include="src\types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="src\OemVista.inf">
+      <FileType>Document</FileType>
+    </Inf>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

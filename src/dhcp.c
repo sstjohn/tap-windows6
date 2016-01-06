@@ -333,7 +333,7 @@ BuildDHCPPre (
 
     if (broadcast)
     {
-        p->ip.daddr = ~0;
+        p->ip.daddr = (ULONG)~0;
     }
     else
     {

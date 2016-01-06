@@ -460,7 +460,7 @@ Return Value:
 
 --*/
 {
-    NDIS_STATUS     status;
+    //NDIS_STATUS     status;
     ULONG           packetLength;
     PTAP_PACKET     tapPacket;
     PVOID           packetData;
@@ -553,7 +553,7 @@ Return Value:
                     (PARP_PACKET) tapPacket->m_Data,
                     Adapter->m_dhcp_addr,
                     Adapter->m_dhcp_server_ip,
-                    ~0,
+                    (IPADDR)~0,
                     Adapter->m_dhcp_server_mac)
                     )
             {

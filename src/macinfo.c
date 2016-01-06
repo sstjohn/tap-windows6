@@ -53,7 +53,7 @@ ParseMAC (MACADDR dest, const char *src)
 
     CLEAR_MAC (dest);
 
-    while (c = *src++)
+    while ((c = *src++) != 0)
     {
         if (IsMacDelimiter (c))
         {
@@ -127,7 +127,7 @@ GenerateRandomMac(
     mac[0] = 0x00;
     mac[1] = 0xFF;
 
-    while (c = *cp++)
+    while ((c = *cp++) != 0)
     {
         if (i >= sizeof (MACADDR))
             break;
